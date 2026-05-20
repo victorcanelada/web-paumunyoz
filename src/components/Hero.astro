@@ -1,0 +1,220 @@
+---
+const items = ["FISIO ESPORTIVA","NEUROGERIÀTRICA","PREVENCIÓ","PRESSOTERÀPIA","POSTUROLOGIA","DOMICILI"];
+const strip = [...items, ...items];
+---
+
+<section class="hero" id="hero" aria-label="Portada">
+
+  <div class="hero__body">
+    <!-- Left: text -->
+    <div class="hero__left">
+      <div class="hero__meta" data-reveal data-delay="1">
+        <span class="eyebrow" style="color:rgba(255,255,255,0.38);border-color:rgba(255,255,255,0.14)">
+          Mataró · Camí de la Geganta, 93
+        </span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__line hero__line--white" data-reveal data-delay="2">HOLA,</span>
+        <span class="hero__line hero__line--teal"  data-reveal data-delay="3">PAUCIENT</span>
+      </h1>
+
+      <p class="hero__sub" data-reveal data-delay="4">
+        Fisioteràpia que et fa moure bé.<br>
+        Tractament individual. Sense presses.
+      </p>
+
+      <div class="hero__actions" data-reveal data-delay="5">
+        <a href="#" class="hero__btn hero__btn--primary" data-open-chat="Hola! Vull demanar una cita">
+          <span>DEMANAR CITA</span>
+          <span class="hero__btn-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: photo -->
+    <div class="hero__photo-wrap" data-reveal data-delay="3">
+      <div class="hero__photo-frame">
+        <img src="/pau.jpg" alt="En Pau Muñoz, fisioterapeuta" class="hero__photo" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: teal hairline + marquee -->
+  <div class="hero__divider" aria-hidden="true"></div>
+  <div class="hero__marquee" aria-hidden="true">
+    <div class="marquee">
+      <div class="marquee__track">
+        {strip.map(item => (
+          <span class="hero__marquee-item">{item}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .hero {
+    min-height: 100svh;
+    background: var(--carbon);
+    display: flex;
+    flex-direction: column;
+    padding-top: calc(var(--nav-h) + 1rem);
+    overflow: hidden;
+  }
+
+  /* ── 2-col body ── */
+  .hero__body {
+    flex: 1;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── Left column ── */
+  .hero__left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero__title {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.87;
+  }
+
+  .hero__line {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 9.5vw, 10rem);
+    display: block;
+    letter-spacing: -0.01em;
+  }
+
+  .hero__line--white { color: var(--white); }
+  .hero__line--teal  { color: var(--teal); }
+
+  .hero__sub {
+    font-size: clamp(0.875rem, 1.2vw, 1.05rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 300;
+    max-width: 380px;
+  }
+
+  .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.875rem; }
+
+  .hero__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.375rem;
+    transition: all 0.3s var(--ease-spring);
+  }
+
+  .hero__btn--primary { background: var(--teal); color: var(--carbon); }
+  .hero__btn--primary:hover { background: var(--white); }
+
+  .hero__btn-icon {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(43, 43, 43, 0.15);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    transition: transform 0.3s var(--ease-spring);
+  }
+  .hero__btn--primary:hover .hero__btn-icon { transform: translateX(3px); }
+
+  /* ── Right column: photo ── */
+  .hero__photo-wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero__photo-frame {
+    width: 100%;
+    max-width: 400px;
+    height: clamp(280px, 58vh, 500px);
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;
+  }
+
+  .hero__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: grayscale(15%);
+  }
+
+  .hero__photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--teal);
+    border-radius: 0 0 16px 16px;
+  }
+
+  /* ── Bottom strip ── */
+  .hero__divider {
+    height: 1px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: draw 1.2s 0.6s var(--ease-spring) forwards;
+    opacity: 0.35;
+  }
+
+  .hero__marquee {
+    background: var(--teal);
+    padding: 0.75rem 0;
+  }
+
+  .hero__marquee-item {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    color: var(--white);
+    letter-spacing: 0.12em;
+    padding: 0 2.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.35);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .hero { padding-top: calc(var(--nav-h) + 0.5rem); }
+
+    .hero__body {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding-bottom: 1rem;
+    }
+
+    .hero__photo-wrap { height: 220px; align-items: stretch; }
+    .hero__photo-frame { max-width: 100%; height: 100%; }
+    .hero__left { gap: 1rem; }
+    .hero__btn { flex: 1; justify-content: center; }
+  }
+</style>

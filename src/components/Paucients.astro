@@ -1,0 +1,270 @@
+---
+const fotos = Array.from({ length: 8 }, (_, i) => `/paucients/${String(i + 1).padStart(2, '0')}.jpg`);
+---
+
+<section class="paucients" id="paucients" aria-label="Paucients esportistes">
+  <div class="paucients__inner container">
+
+    <!-- Left: text -->
+    <div class="paucients__text">
+      <div data-reveal>
+        <span class="eyebrow" style="color:rgba(255,255,255,0.35);border-color:rgba(255,255,255,0.15)">Prova social</span>
+      </div>
+      <h2 class="paucients__title" data-reveal data-delay="1">
+        ELS<br><span class="paucients__teal">PAUCIENTS</span>
+      </h2>
+      <p class="paucients__desc" data-reveal data-delay="2">
+        Esportistes professionals que confien en en Pau per recuperar-se, prevenir lesions i rendir al màxim. Si vols moure't com els millors, vine a la consulta.
+      </p>
+      <div class="paucients__actions" data-reveal data-delay="3">
+        <a href="#" class="paucients__btn paucients__btn--primary" data-open-chat="Hola! Vull demanar una cita">
+          <span>DEMANAR CITA</span>
+          <span class="paucients__btn-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: iPhone mockup -->
+    <div class="paucients__device" data-reveal data-delay="2" aria-label="Galeria de paucients">
+      <div class="iphone">
+        <div class="iphone__shell">
+          <div class="iphone__core">
+            <div class="iphone__notch" aria-hidden="true">
+              <div class="iphone__camera"></div>
+            </div>
+            <div class="iphone__screen">
+              <div class="iphone__slides" id="paucients-slides">
+                {fotos.map((src, i) => (
+                  <div class="iphone__slide" aria-hidden={i !== 0 ? "true" : "false"}>
+                    <img src={src} alt={`Paucient esportista ${i + 1}`} loading={i < 2 ? "eager" : "lazy"} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="iphone__bottom" aria-hidden="true">
+              <div class="iphone__dots" id="paucients-dots">
+                {fotos.map((_, i) => (
+                  <button
+                    class={`iphone__dot${i === 0 ? ' iphone__dot--on' : ''}`}
+                    data-dot={i}
+                    aria-label={`Foto ${i + 1}`}
+                  ></button>
+                ))}
+              </div>
+              <div class="iphone__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const slides  = document.getElementById('paucients-slides') as HTMLDivElement;
+  const dotBtns = Array.from(document.querySelectorAll('.iphone__dot')) as HTMLButtonElement[];
+  const total   = dotBtns.length;
+  let current   = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(n: number) {
+    current = (n + total) % total;
+    slides.style.transform = `translateX(-${current * 100}%)`;
+    dotBtns.forEach((d, i) => d.classList.toggle('iphone__dot--on', i === current));
+  }
+
+  dotBtns.forEach((btn, i) => btn.addEventListener('click', () => {
+    clearInterval(timer);
+    goTo(i);
+    timer = setInterval(() => goTo(current + 1), 3200);
+  }));
+
+  timer = setInterval(() => goTo(current + 1), 3200);
+</script>
+
+<style>
+  .paucients {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--carbon);
+  }
+
+  .paucients__inner {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;           /* was 5rem — reduced */
+    align-items: center;
+  }
+
+  /* ── Text ── */
+  .paucients__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    line-height: 0.9;
+    color: var(--white);
+    margin: 1.25rem 0 1.5rem;
+  }
+
+  .paucients__teal { color: var(--teal); }
+
+  .paucients__desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.42);
+    max-width: 380px;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .paucients__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    align-items: center;
+  }
+
+  .paucients__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.875rem 1.375rem;
+    transition: background 0.25s var(--ease-out), color 0.25s, border-color 0.25s;
+  }
+
+  .paucients__btn--primary {
+    background: var(--teal);
+    color: var(--carbon);
+  }
+  .paucients__btn--primary:hover { background: var(--white); }
+
+  .paucients__btn-icon {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(43,43,43,0.15);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    transition: transform 0.3s var(--ease-spring);
+  }
+  .paucients__btn--primary:hover .paucients__btn-icon { transform: translateX(3px); }
+
+  .paucients__btn--ig {
+    color: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.15);
+    text-transform: none;
+    letter-spacing: 0.03em;
+  }
+  .paucients__btn--ig:hover {
+    color: var(--white);
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  /* ── iPhone ── */
+  .paucients__device {
+    display: flex;
+    justify-content: center;
+  }
+
+  .iphone { width: 260px; }
+
+  .iphone__shell {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 44px;
+    padding: 8px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .iphone__core {
+    background: #111;
+    border-radius: 38px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 9 / 19.5;
+    position: relative;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.06);
+  }
+
+  .iphone__notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 26px;
+    background: #111;
+    border-radius: 0 0 18px 18px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .iphone__camera {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+  }
+
+  .iphone__screen { flex: 1; overflow: hidden; position: relative; }
+
+  .iphone__slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.55s var(--ease-spring);
+    will-change: transform;
+  }
+
+  .iphone__slide { min-width: 100%; height: 100%; }
+  .iphone__slide img { width: 100%; height: 100%; object-fit: cover; }
+
+  .iphone__bottom {
+    padding: 0.625rem 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: #111;
+  }
+
+  .iphone__dots { display: flex; gap: 4px; }
+
+  .iphone__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s, transform 0.25s var(--ease-spring);
+  }
+  .iphone__dot--on { background: var(--teal); transform: scale(1.4); }
+
+  .iphone__bar {
+    width: 70px;
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .paucients__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .paucients__device { order: -1; }
+    .iphone { width: 210px; }
+    .paucients__btn--primary { flex: 1; justify-content: center; }
+  }
+</style>

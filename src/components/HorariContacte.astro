@@ -1,0 +1,381 @@
+---
+---
+
+<section class="hc" id="horari" aria-label="Horari i contacte">
+  <div class="hc__inner container">
+
+    <!-- Full-width header -->
+    <div class="hc__header">
+      <div data-reveal>
+        <span class="eyebrow">Parlem</span>
+      </div>
+      <h2 class="hc__title" data-reveal data-delay="1">
+        CON<span class="hc__teal">TACTE</span>
+      </h2>
+    </div>
+
+    <!-- 2-column body -->
+    <div class="hc__body">
+
+    <!-- Col 1: Contacte (form) -->
+    <div class="hc__contact" id="contacte">
+      <p class="hc__desc" data-reveal>
+        Deixa el teu nom i telèfon i en Pau et contactarà en breu.
+      </p>
+
+      <!-- Form shell -->
+      <div class="hc__form-shell" data-reveal data-delay="1">
+        <div class="hc__form-core">
+          <form
+            name="cita"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/gracies"
+            class="hc__form"
+          >
+            <input type="hidden" name="form-name" value="cita" />
+            <p hidden><label>No ompliu: <input name="bot-field" /></label></p>
+
+            <div class="hc__field">
+              <label for="nom" class="hc__label">Nom *</label>
+              <input type="text" id="nom" name="nom" class="hc__input" required placeholder="El teu nom" autocomplete="name" />
+            </div>
+
+            <div class="hc__field">
+              <label for="telefon" class="hc__label">Telèfon *</label>
+              <input type="tel" id="telefon" name="telefon" class="hc__input" required placeholder="600 000 000" autocomplete="tel" />
+            </div>
+
+            <div class="hc__field">
+              <label for="servei" class="hc__label">Servei</label>
+              <select id="servei" name="servei" class="hc__input hc__select">
+                <option value="">Selecciona un servei…</option>
+                <option>Fisioteràpia Integral i Esportiva</option>
+                <option>Fisio Neurogeriàtrica</option>
+                <option>Prevenció de Lesions</option>
+                <option>Pressoteràpia</option>
+                <option>Posturologia</option>
+                <option>Atenció a Domicili</option>
+                <option>No ho sé encara</option>
+              </select>
+            </div>
+
+            <div class="hc__field">
+              <label for="missatge" class="hc__label">Missatge</label>
+              <textarea id="missatge" name="missatge" rows="3" class="hc__input hc__textarea" placeholder="Explica breument el teu cas…"></textarea>
+            </div>
+
+            <button type="submit" class="hc__submit">
+              <span>ENVIAR MISSATGE</span>
+              <span class="hc__submit-icon" aria-hidden="true">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Col 2: Mapa + Horari + Parking -->
+    <div class="hc__schedule">
+
+      <div class="hc__map-wrap" data-reveal>
+        <p class="hc__address">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Camí de la Geganta, 93 · 08302 Mataró
+        </p>
+        <div class="hc__map">
+          <iframe
+            title="Ubicació Pau Muñoz Fisioteràpia"
+            src="https://maps.google.com/maps?q=Cam%C3%AD+de+la+Geganta+93+08302+Matar%C3%B3&output=embed"
+            width="100%" height="100%"
+            style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <a
+          href="https://maps.google.com/?daddr=Cam%C3%AD+de+la+Geganta,+93,+08302+Matar%C3%B3"
+          target="_blank" rel="noopener noreferrer"
+          class="hc__directions"
+        >
+          COM ARRIBAR-HI
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+
+      <div class="hc__info-boxes" data-reveal data-delay="1">
+        <div class="hc__info-box">
+          <span class="hc__info-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </span>
+          <span>Dl–Dv <strong>15:45–21:45</strong> · Ds <strong>9:00–14:00</strong> · Dg tancat</span>
+        </div>
+        <div class="hc__info-box">
+          <span class="hc__info-icon hc__info-icon--p" aria-hidden="true">P</span>
+          <span><strong>Paurking</strong> a 50 metres de la consulta</span>
+        </div>
+      </div>
+
+    </div>
+
+    </div><!-- /.hc__body -->
+  </div><!-- /.hc__inner -->
+</section>
+
+<style>
+  .hc {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--off-white);
+  }
+
+  .hc__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .hc__header { max-width: 640px; }
+
+  .hc__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* ── Shared title ── */
+  .hc__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    line-height: 0.92;
+    color: var(--carbon);
+    margin: 1rem 0 0;
+  }
+
+  .hc__teal { color: var(--teal); }
+
+  /* ─── SCHEDULE ─── */
+  .hc__map-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hc__info-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .hc__info-box {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.875rem 1rem;
+    background: var(--white);
+    border-left: 2px solid var(--teal);
+    font-size: 0.9rem;
+    color: var(--carbon);
+  }
+  .hc__info-box strong { font-weight: 500; }
+
+  .hc__info-icon {
+    color: var(--teal);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .hc__info-icon--p {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    line-height: 1;
+  }
+
+  .hc__address {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--carbon);
+  }
+  .hc__address svg { color: var(--teal); flex-shrink: 0; }
+
+  .hc__map {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #DDD;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .hc__directions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--carbon);
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 1px;
+    transition: color 0.2s;
+    align-self: flex-start;
+  }
+  .hc__directions:hover { color: var(--teal); }
+
+  /* ─── CONTACTE ─── */
+  .hc__desc {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: #777;
+    font-weight: 300;
+    max-width: 380px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Quick CTA row */
+  .hc__quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+    align-items: center;
+  }
+
+  .hc__chat-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--carbon);
+    color: var(--white);
+    padding: 0.75rem 1.25rem;
+    transition: background 0.25s var(--ease-out);
+  }
+  .hc__chat-btn:hover { background: var(--teal); }
+
+  .hc__ig-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: rgba(43,43,43,0.55);
+    border: 1px solid var(--hairline);
+    padding: 0.75rem 1rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .hc__ig-btn:hover { color: var(--carbon); border-color: var(--carbon); }
+
+  /* Divider with text */
+  .hc__divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: #CCC;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+  .hc__divider::before,
+  .hc__divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
+
+  /* Double-bezel form */
+  .hc__form-shell {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    padding: 5px;
+  }
+
+  .hc__form-core {
+    background: var(--off-white);
+    padding: 1.75rem 1.5rem;
+  }
+
+  .hc__form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .hc__field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+  .hc__label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #AAA;
+  }
+
+  .hc__input {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--carbon);
+    background: var(--white);
+    border: 1px solid transparent;
+    padding: 0.75rem 0.875rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .hc__input:focus { border-color: var(--teal); }
+  .hc__input::placeholder { color: #CCC; }
+
+  .hc__select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232B2B2B' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    padding-right: 2.25rem;
+  }
+
+  .hc__textarea { resize: vertical; min-height: 90px; }
+
+  .hc__submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--carbon);
+    color: var(--white);
+    padding: 0.875rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.25s var(--ease-out);
+  }
+  .hc__submit:hover { background: var(--teal); }
+
+  .hc__submit-icon {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    transition: transform 0.3s var(--ease-spring);
+  }
+  .hc__submit:hover .hc__submit-icon { transform: translateX(3px); }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .hc__body { grid-template-columns: 1fr; gap: 3rem; }
+    .hc__submit { width: 100%; justify-content: center; }
+  }
+</style>

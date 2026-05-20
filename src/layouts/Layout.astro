@@ -1,0 +1,161 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Pau Muñoz Fisioteràpia | Fisioterapeuta a Mataró",
+  description = "Fisioterapeuta a Mataró. Lesions esportives, neurogeriàtrica, pressoteràpia, posturologia i atenció a domicili. Consulta al Camí de la Geganta, 93. Truca: 600 07 36 29.",
+} = Astro.props;
+
+const siteUrl = "https://paumfisioterapia.com";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["MedicalBusiness", "LocalBusiness"],
+      "@id": `${siteUrl}/#business`,
+      "name": "Pau Muñoz Fisioteràpia",
+      "alternateName": "PMF",
+      "description": "Consulta de fisioteràpia integral i esportiva a Mataró. Tractament de lesions esportives, fisio neurogeriàtrica, posturologia, pressoteràpia i atenció a domicili.",
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon.svg`,
+      "image": `${siteUrl}/pau.jpg`,
+      "telephone": "+34600073629",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "medicalSpecialty": "Physiotherapy",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Camí de la Geganta, 93",
+        "addressLocality": "Mataró",
+        "addressRegion": "Catalunya",
+        "postalCode": "08302",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.5550878,
+        "longitude": 2.4600782
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Mataró" },
+        { "@type": "AdministrativeArea", "name": "Maresme" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "15:45",
+          "closes": "21:45"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "14:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serveis de Fisioteràpia",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fisioteràpia Integral i Esportiva", "description": "Tractament de lesions musculoesquelètiques agudes i cròniques per a esportistes i persones actives." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fisio Neurogeriàtrica", "description": "Atenció especialitzada per a persones grans amb patologies neurològiques. Millora de mobilitat i equilibri." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Prevenció de Lesions", "description": "Avaluació funcional i treball preventiu per a esportistes. Detecció de punts febles abans que esdevinguin lesions." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pressoteràpia", "description": "Drenatge i millora de la circulació per pressió controlada. Ideal per a recuperació muscular i edemes." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Posturologia", "description": "Anàlisi i correcció de desequilibris posturals que generen dolor crònic i disfuncions." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Atenció a Domicili", "description": "Fisioteràpia al domicili del pacient per a qui no pot desplaçar-se a la consulta." }}
+        ]
+      },
+      "employee": {
+        "@type": "Person",
+        "name": "Pau Muñoz",
+        "jobTitle": "Fisioterapeuta col·legiat",
+        "worksFor": { "@id": `${siteUrl}/#business` },
+        "knowsAbout": ["Fisioteràpia Esportiva","Fisioteràpia Neurogeriàtrica","Posturologia","Pressoteràpia","Prevenció de Lesions","Atenció a Domicili"]
+      },
+      "sameAs": [
+        "https://www.instagram.com/paumfisioterapia/",
+        "https://www.facebook.com/paumfisioterapia/"
+      ]
+    }
+  ]
+};
+---
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ca_ES" />
+    <meta property="og:site_name" content="Pau Muñoz Fisioteràpia" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}/pau.jpg`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/pau.jpg`} />
+
+    <!-- Geo -->
+    <meta name="geo.region" content="ES-CT" />
+    <meta name="geo.placename" content="Mataró, Barcelona" />
+    <meta name="geo.position" content="41.5550878;2.4600782" />
+    <meta name="ICBM" content="41.5550878, 2.4600782" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Scroll-reveal via IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+      // Global handler: [data-open-chat] buttons open chatbot with auto-message
+      document.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('[data-open-chat]');
+        if (btn) {
+          e.preventDefault();
+          const msg = btn.getAttribute('data-open-chat') || '';
+          if (typeof (window as any).openChat === 'function') {
+            (window as any).openChat(msg || undefined);
+          }
+        }
+      });
+
+      // Floating nav: add scrolled class
+      const nav = document.getElementById('main-nav');
+      const onScroll = () => nav?.classList.toggle('navbar--scrolled', window.scrollY > 40);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    </script>
+  </body>
+</html>

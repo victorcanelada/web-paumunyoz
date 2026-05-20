@@ -1,0 +1,276 @@
+---
+---
+<section class="contacte" id="contacte" aria-label="Contacte">
+  <div class="contacte__inner container">
+
+    <!-- Left -->
+    <div class="contacte__info">
+      <div data-reveal>
+        <span class="eyebrow">Parlem</span>
+      </div>
+      <h2 class="contacte__title" data-reveal data-delay="1">
+        DEMANA<br><span class="contacte__title--teal">CITA</span>
+      </h2>
+      <p class="contacte__desc" data-reveal data-delay="2">
+        Omple el formulari i en Pau et contactarà per confirmar dia i hora. O truca directament al mòbil.
+      </p>
+
+      <div class="contacte__channels" data-reveal data-delay="3">
+        <a href="tel:+34600073629" class="contacte__ch">
+          <div class="contacte__ch-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.92a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/>
+            </svg>
+          </div>
+          <div class="contacte__ch-text">
+            <span class="contacte__ch-label">Telèfon · WhatsApp</span>
+            <span class="contacte__ch-value">600 07 36 29</span>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/paumfisioterapia/" target="_blank" rel="noopener noreferrer" class="contacte__ch">
+          <div class="contacte__ch-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+          <div class="contacte__ch-text">
+            <span class="contacte__ch-label">Instagram</span>
+            <span class="contacte__ch-value">@paumfisioterapia</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: form with double-bezel shell -->
+    <div class="contacte__form-shell" data-reveal data-delay="2">
+      <div class="contacte__form-core">
+        <form
+          name="cita"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/gracies"
+          class="contacte__form"
+        >
+          <input type="hidden" name="form-name" value="cita" />
+          <p hidden><label>No ompliu: <input name="bot-field" /></label></p>
+
+          <div class="contacte__field">
+            <label for="nom" class="contacte__label">Nom *</label>
+            <input type="text" id="nom" name="nom" class="contacte__input" required placeholder="El teu nom" autocomplete="name" />
+          </div>
+
+          <div class="contacte__field">
+            <label for="telefon" class="contacte__label">Telèfon *</label>
+            <input type="tel" id="telefon" name="telefon" class="contacte__input" required placeholder="600 000 000" autocomplete="tel" />
+          </div>
+
+          <div class="contacte__field">
+            <label for="servei" class="contacte__label">Servei</label>
+            <select id="servei" name="servei" class="contacte__input contacte__select">
+              <option value="">Selecciona un servei…</option>
+              <option>Fisioteràpia Integral i Esportiva</option>
+              <option>Fisio Neurogeriàtrica</option>
+              <option>Prevenció de Lesions</option>
+              <option>Pressoteràpia</option>
+              <option>Posturologia</option>
+              <option>Atenció a Domicili</option>
+              <option>No ho sé encara</option>
+            </select>
+          </div>
+
+          <div class="contacte__field">
+            <label for="missatge" class="contacte__label">Missatge</label>
+            <textarea id="missatge" name="missatge" rows="4" class="contacte__input contacte__textarea" placeholder="Explica breument el teu cas…"></textarea>
+          </div>
+
+          <button type="submit" class="contacte__submit">
+            <span>ENVIAR SOL·LICITUD</span>
+            <span class="contacte__submit-icon" aria-hidden="true">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contacte {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--white);
+  }
+
+  .contacte__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contacte__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.92;
+    color: var(--carbon);
+    margin: 1.25rem 0 1.5rem;
+  }
+
+  .contacte__title--teal { color: var(--teal); }
+
+  .contacte__desc {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #777;
+    font-weight: 300;
+    max-width: 360px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Channels ── */
+  .contacte__channels { display: flex; flex-direction: column; gap: 0.875rem; }
+
+  .contacte__ch {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--off-white);
+    border: 1px solid var(--hairline);
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .contacte__ch:hover {
+    border-color: var(--teal);
+    background: var(--white);
+  }
+
+  .contacte__ch-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--carbon);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.25s;
+  }
+
+  .contacte__ch:hover .contacte__ch-icon { background: var(--teal); }
+
+  .contacte__ch-text { display: flex; flex-direction: column; gap: 0.125rem; }
+
+  .contacte__ch-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #AAA;
+  }
+
+  .contacte__ch-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--carbon);
+  }
+
+  /* ── Double-bezel form ── */
+  .contacte__form-shell {
+    background: var(--off-white);
+    border: 1px solid var(--hairline);
+    padding: 6px;
+  }
+
+  .contacte__form-core {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--hairline);
+  }
+
+  .contacte__form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .contacte__field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .contacte__label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  .contacte__input {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--carbon);
+    background: var(--off-white);
+    border: 1px solid transparent;
+    padding: 0.875rem 1rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.25s var(--ease-out), background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .contacte__input:focus {
+    border-color: var(--teal);
+    background: var(--white);
+  }
+
+  .contacte__input::placeholder { color: #CCC; }
+
+  .contacte__select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232B2B2B' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  .contacte__textarea { resize: vertical; min-height: 110px; }
+
+  .contacte__submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.875rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--carbon);
+    color: var(--white);
+    padding: 1rem 1.75rem;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.25s var(--ease-out);
+  }
+
+  .contacte__submit:hover { background: var(--teal); }
+
+  .contacte__submit-icon {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    transition: transform 0.3s var(--ease-spring);
+  }
+
+  .contacte__submit:hover .contacte__submit-icon { transform: translateX(3px); }
+
+  @media (max-width: 900px) {
+    .contacte__inner { grid-template-columns: 1fr; gap: 3rem; }
+    .contacte__submit { width: 100%; justify-content: center; }
+  }
+</style>

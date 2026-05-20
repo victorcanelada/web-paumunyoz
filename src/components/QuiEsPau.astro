@@ -1,0 +1,162 @@
+---
+---
+<section class="qui" id="qui" aria-label="Qui és en Pau">
+  <div class="qui__inner container">
+
+    <!-- Left: photo of Pau -->
+    <div class="qui__photo-wrap" data-reveal>
+      <div class="qui__photo-frame">
+        <img src="/pau2.jpg" alt="Pau Muñoz, fisioterapeuta" class="qui__photo" />
+        <div class="qui__photo-badge">
+          <span class="qui__photo-badge-text">PAU MUÑOZ FISIOTERÀPIA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: text -->
+    <div class="qui__text">
+      <div data-reveal data-delay="1">
+        <span class="eyebrow">Fisioterapeuta</span>
+      </div>
+      <h2 class="qui__title" data-reveal data-delay="2">
+        PAU<br><span class="qui__title--teal">MUÑOZ</span>
+      </h2>
+      <p class="qui__bio" data-reveal data-delay="3">
+        Fisioterapeuta col·legiat amb consulta pròpia al Camí de la Geganta de Mataró. Especialitzat en fisioteràpia integral i esportiva, treballa amb esportistes d'elit i pacients de totes les edats amb el mateix objectiu: que et moguis bé i sense dolor.
+      </p>
+      <p class="qui__bio" data-reveal data-delay="4">
+        Des de la fisioterapia neurogeriàtrica fins a la posturologia, cada tractament és individual, adaptat i sense presses. Per als qui no poden venir, també fa visites a domicili.
+      </p>
+
+      <div class="qui__stats" data-reveal data-delay="5">
+        <div class="qui__stat">
+          <span class="qui__stat-n">06</span>
+          <span class="qui__stat-l">especialitats</span>
+        </div>
+        <div class="qui__stat-sep" aria-hidden="true"></div>
+        <div class="qui__stat">
+          <span class="qui__stat-n">6d</span>
+          <span class="qui__stat-l">a la setmana</span>
+        </div>
+        <div class="qui__stat-sep" aria-hidden="true"></div>
+        <div class="qui__stat">
+          <span class="qui__stat-n">+</span>
+          <span class="qui__stat-l">atenció domicili</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .qui {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--white);
+  }
+
+  .qui__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  /* ── Photo ── */
+  .qui__photo-wrap { width: 100%; }
+
+  .qui__photo-frame {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .qui__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .qui__photo-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background: rgba(43, 43, 43, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 0.625rem 1rem;
+  }
+
+  .qui__photo-badge-text {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  /* ── Text ── */
+  .qui__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.92;
+    color: var(--carbon);
+    margin: 1.25rem 0 1.75rem;
+  }
+
+  .qui__title--teal { color: var(--teal); }
+
+  .qui__bio {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #666;
+    max-width: 460px;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .qui__stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .qui__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .qui__stat-n {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    color: var(--teal);
+    line-height: 1;
+  }
+
+  .qui__stat-l {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  .qui__stat-sep {
+    width: 1px;
+    height: 40px;
+    background: var(--hairline);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .qui__inner { grid-template-columns: 1fr; gap: 3rem; }
+    .qui__monogram-shell { padding: 2rem; }
+  }
+</style>

@@ -1,0 +1,129 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="footer__body container">
+    <div class="footer__brand">
+      <a href="#hero" aria-label="PMF – inici">
+        <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="50" fill="#5BBFD1"/>
+          <text x="9" y="67" font-family="Arial Black,sans-serif" font-size="46" font-weight="900" fill="#2B2B2B">PM</text>
+          <text x="68" y="67" font-family="Arial Black,sans-serif" font-size="46" font-weight="900" fill="#FFFFFF">F</text>
+        </svg>
+      </a>
+      <p class="footer__tagline">PAU MUÑOZ FISIOTERÀPIA</p>
+      <address class="footer__addr">
+        Camí de la Geganta, 93<br>
+        08302 Mataró, Barcelona
+      </address>
+    </div>
+
+    <nav class="footer__nav" aria-label="Peu de pàgina">
+      <p class="footer__nav-head">NAVEGACIÓ</p>
+      <a href="#serveis">Serveis</a>
+      <a href="#paucients">Paucients</a>
+      <a href="#horari">Horari</a>
+      <a href="#contacte">Contacte</a>
+    </nav>
+
+    <div class="footer__contact">
+      <p class="footer__nav-head">CONTACTE</p>
+      <a href="tel:+34600073629" class="footer__phone">600 07 36 29</a>
+      <a href="https://www.instagram.com/paumfisioterapia/" target="_blank" rel="noopener noreferrer">@paumfisioterapia</a>
+      <a href="https://www.facebook.com/paumfisioterapia/" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom container">
+    <p>© {year} Pau Muñoz Fisioteràpia · Tots els drets reservats</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--carbon);
+    color: var(--white);
+  }
+
+  /* Body */
+  .footer__body {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer__tagline {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer__addr {
+    font-size: 0.9375rem;
+    font-style: normal;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* Nav & contact columns */
+  .footer__nav,
+  .footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer__nav-head {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.25rem;
+  }
+
+  .footer__nav a,
+  .footer__contact a {
+    font-size: 0.9375rem;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.2s;
+  }
+
+  .footer__nav a:hover,
+  .footer__contact a:hover { color: var(--white); }
+
+  .footer__phone {
+    font-family: var(--font-display);
+    font-size: 1.375rem !important;
+    color: var(--white) !important;
+    letter-spacing: 0.03em;
+  }
+
+  .footer__phone:hover { color: var(--teal) !important; }
+
+  /* Bottom */
+  .footer__bottom {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .footer__body {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

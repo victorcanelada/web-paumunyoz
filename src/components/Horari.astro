@@ -1,0 +1,226 @@
+---
+const dies = [
+  { ca: "Dilluns",    open: "15:45", close: "21:45" },
+  { ca: "Dimarts",   open: "15:45", close: "21:45" },
+  { ca: "Dimecres",  open: "15:45", close: "21:45" },
+  { ca: "Dijous",    open: "15:45", close: "21:45" },
+  { ca: "Divendres", open: "15:45", close: "21:45" },
+  { ca: "Dissabte",  open: "09:00", close: "14:00" },
+];
+---
+
+<section class="horari" id="horari" aria-label="Horari i ubicació">
+  <div class="horari__inner container">
+
+    <!-- Schedule -->
+    <div class="horari__schedule">
+      <div data-reveal>
+        <span class="eyebrow">Quan pots venir</span>
+      </div>
+      <h2 class="horari__title" data-reveal data-delay="1">
+        L'<span class="horari__teal">HORARI</span>
+      </h2>
+
+      <ul class="horari__list" data-reveal data-delay="2">
+        {dies.map((d) => (
+          <li class="horari__row">
+            <span class="horari__day">{d.ca}</span>
+            <span class="horari__range">
+              <strong>{d.open}</strong>
+              <span class="horari__dash">—</span>
+              <strong>{d.close}</strong>
+            </span>
+          </li>
+        ))}
+        <li class="horari__row horari__row--closed">
+          <span class="horari__day">Diumenge</span>
+          <span class="horari__closed">Tancat</span>
+        </li>
+      </ul>
+
+      <div class="horari__extras" data-reveal data-delay="3">
+        <div class="horari__parking">
+          <span class="horari__parking-p">P</span>
+          <span><strong>Paurking</strong> a 50 metres de la consulta</span>
+        </div>
+        <a href="tel:+34600073629" class="horari__tel">
+          600 07 36 29
+        </a>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="horari__map-col" data-reveal data-delay="2">
+      <p class="horari__address">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Camí de la Geganta, 93 · 08302 Mataró
+      </p>
+      <div class="horari__map-frame">
+        <iframe
+          title="Ubicació de Pau Muñoz Fisioteràpia a Mataró"
+          src="https://maps.google.com/maps?q=Cam%C3%AD+de+la+Geganta+93+08302+Matar%C3%B3&output=embed"
+          width="100%" height="100%"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      <a
+        href="https://maps.google.com/?daddr=Cam%C3%AD+de+la+Geganta,+93,+08302+Matar%C3%B3"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="horari__directions"
+      >
+        COM ARRIBAR-HI
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .horari {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--off-white);
+  }
+
+  .horari__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .horari__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.92;
+    color: var(--carbon);
+    margin: 1.25rem 0 2.5rem;
+  }
+
+  .horari__teal { color: var(--teal); }
+
+  /* ── Table ── */
+  .horari__list {
+    list-style: none;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .horari__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .horari__row--closed {
+    opacity: 0.4;
+  }
+
+  .horari__day {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    color: var(--carbon);
+    letter-spacing: 0.02em;
+  }
+
+  .horari__range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: #888;
+  }
+
+  .horari__range strong { color: var(--teal); font-weight: 500; }
+  .horari__dash { color: #CCC; }
+
+  .horari__closed {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #BBB;
+  }
+
+  /* ── Extras ── */
+  .horari__extras {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .horari__parking {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+    border-left: 2px solid var(--teal);
+    font-size: 0.9375rem;
+    color: var(--carbon);
+  }
+
+  .horari__parking-p {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--teal);
+    line-height: 1;
+  }
+
+  .horari__tel {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--carbon);
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .horari__tel:hover { color: var(--teal); }
+
+  /* ── Map ── */
+  .horari__address {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--carbon);
+    margin-bottom: 1rem;
+  }
+
+  .horari__address svg { color: var(--teal); flex-shrink: 0; }
+
+  .horari__map-frame {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #DDD;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .horari__directions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--carbon);
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+
+  .horari__directions:hover { color: var(--teal); }
+
+  @media (max-width: 900px) {
+    .horari__inner { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>

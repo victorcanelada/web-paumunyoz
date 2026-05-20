@@ -1,0 +1,172 @@
+---
+const serveis = [
+  { num: "01", name: "Fisioteràpia Integral i Esportiva", desc: "Tractament de lesions musculoesquelètiques agudes i cròniques. Enfocament global per recuperar la funció i tornar al teu esport." },
+  { num: "02", name: "Fisio Neurogeriàtrica",             desc: "Atenció especialitzada per a persones grans amb patologies neurològiques. Millora de la mobilitat, l'equilibri i la qualitat de vida." },
+  { num: "03", name: "Prevenció de Lesions",              desc: "Avaluació funcional i treball preventiu per a esportistes i persones actives. Detecta punts febles abans que es converteixin en lesions." },
+  { num: "04", name: "Pressoteràpia",                     desc: "Drenatge i millora de la circulació per pressió controlada. Ideal per a recuperació muscular, edemes i pesadesa a les cames." },
+  { num: "05", name: "Posturologia",                      desc: "Anàlisi i correcció de desequilibris posturals que generen dolor crònic i disfuncions. Abordatge global del sistema postural." },
+  { num: "06", name: "Atenció a Domicili",                desc: "Fisioteràpia al teu domicili. Per a qui no pot desplaçar-se a la consulta sense renunciar a la qualitat del tractament." },
+];
+---
+
+<section class="serveis" id="serveis" aria-label="Serveis">
+  <div class="container">
+    <div class="serveis__header">
+      <div data-reveal>
+        <span class="eyebrow">El que fas</span>
+      </div>
+      <h2 class="serveis__title" data-reveal data-delay="1">
+        ELS <span class="serveis__title--teal">SERVEIS</span>
+      </h2>
+    </div>
+
+    <div class="serveis__grid">
+      {serveis.map((s, i) => (
+        <article class="serveis__card" data-reveal data-delay={String((i % 3) + 1)}>
+          <div class="serveis__card-top">
+            <span class="serveis__num">{s.num}</span>
+          </div>
+          <h3 class="serveis__name">{s.name}</h3>
+          <p class="serveis__desc">{s.desc}</p>
+          <div class="serveis__accent" aria-hidden="true"></div>
+        </article>
+      ))}
+    </div>
+
+    <div class="serveis__footer" data-reveal>
+      <a href="#" class="serveis__cta" data-open-chat="Hola! Vull demanar una cita">
+        <span>DEMANA LA TEVA CITA</span>
+        <span class="serveis__cta-icon" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .serveis {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background: var(--off-white);
+  }
+
+  .serveis__header { margin-bottom: 3.5rem; }
+
+  .serveis__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9;
+    color: var(--carbon);
+    margin-top: 1rem;
+  }
+
+  .serveis__title--teal { color: var(--teal); }
+
+  /* ── 3×2 Grid ── */
+  .serveis__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--hairline);
+    border-left: 1px solid var(--hairline);
+  }
+
+  .serveis__card {
+    padding: 2rem 1.75rem 2rem;
+    border-right: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    transition: background 0.3s var(--ease-out);
+  }
+
+  .serveis__card:hover { background: var(--white); }
+
+  /* Teal top-border accent that slides in */
+  .serveis__accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-spring);
+  }
+
+  .serveis__card:hover .serveis__accent { transform: scaleX(1); }
+
+  .serveis__card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .serveis__num {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--teal);
+    opacity: 0.6;
+    line-height: 1;
+  }
+
+  .serveis__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+    color: var(--carbon);
+    line-height: 1.1;
+    flex: 1;
+  }
+
+  .serveis__desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #888;
+    font-weight: 300;
+  }
+
+  /* ── Footer CTA ── */
+  .serveis__footer { margin-top: 3rem; }
+
+  .serveis__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--carbon);
+    padding: 1rem 1.75rem;
+    transition: background 0.25s var(--ease-out);
+  }
+
+  .serveis__cta:hover { background: var(--teal); }
+
+  .serveis__cta-icon {
+    display: inline-flex;
+    width: 26px;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    transition: transform 0.3s var(--ease-spring);
+  }
+
+  .serveis__cta:hover .serveis__cta-icon { transform: translateX(3px); }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .serveis__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .serveis__grid { grid-template-columns: 1fr; }
+    .serveis__cta { width: 100%; justify-content: center; }
+  }
+</style>
