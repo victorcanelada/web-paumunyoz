@@ -77,13 +77,28 @@ const faqSchema = {
 <style>
   .faq {
     padding: clamp(5rem, 10vw, 9rem) 0;
-    background: var(--off-white);
+    background: var(--white);
   }
 
   .faq__inner {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+  }
+
+  .faq__header {
+    text-align: center;
+  }
+
+  .faq__list {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 768px) {
+    .faq__header { text-align: left; }
   }
 
   .faq__title {
